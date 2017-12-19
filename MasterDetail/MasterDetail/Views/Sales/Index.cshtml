@@ -9,7 +9,11 @@
             $(".displayOrderDataLink").click(function ()
             {
                 var customerId = $(this).data("customerid");
-                alert("Klikattiin: " + customerId);
+
+                var url = "GetOrderData/" + customerId;
+                $.getJSON(url, null, function (data) {
+                    alert("Kutsu onnistui, data = " + data.html);
+                });
             });
         });
     </script>
