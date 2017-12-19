@@ -2,6 +2,18 @@
 @{
     ViewBag.Title = "List Customer";
 }
+@section scripts {
+    <script>
+        $(function ()
+        {
+            $(".displayOrderDataLink").click(function ()
+            {
+                var customerId = $(this).data("customerid");
+                alert("Klikattiin: " + customerId);
+            });
+        });
+    </script>
+    }
 
 <h2>List Customer</h2>
 
@@ -21,7 +33,7 @@
         {
         <tr>
 
-            <td><a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
+            <td><a href="#" class="displayOrderDataLink" data-customerid="@cust.CustomerID"><span class="glyphicon glyphicon-plus-sign"></span></a>@cust.CustomerID</td>
             <td>@cust.CompanyName</td>
             <td>@cust.ContactName</td>
             <td>@cust.City</td>
