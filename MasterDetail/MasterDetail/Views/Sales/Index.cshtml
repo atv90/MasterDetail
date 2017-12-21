@@ -12,8 +12,14 @@
 
                 var url = "GetOrderData/" + customerId;
                 $.getJSON(url, null, function (data) {
-                    alert("Kutsu onnistui, data = " + data.html);
+                   // alert("Kutsu onnistui, data = " + data.html);
+
+                    var id = "#orderDetailsRow-" +customerId;
+                    $(id).html(data.html);
+                    $(id).css("display", "block");
                 });
+                //estää sivun palautumisen alkuun linkin klikkaamisen jälkeen
+                return false;
             });
         });
     </script>
@@ -36,13 +42,14 @@
         @foreach (MasterDetail.Models.Customers cust in Model)
         {
         <tr>
-
-            <td><a href="#" class="displayOrderDataLink" data-customerid="@cust.CustomerID"><span class="glyphicon glyphicon-plus-sign"></span></a>@cust.CustomerID</td>
+            <td><a href="#" class="displayOrderDataLink" data-customerid="@cust.CustomerID"><span class="glyphicon glyphicon-plus-sign"></span></a> @cust.CustomerID</td>
             <td>@cust.CompanyName</td>
             <td>@cust.ContactName</td>
             <td>@cust.City</td>
             <td>@cust.Country</td>
 
+        </tr>
+        <tr id="orderDetailsRow-@cust.CustomerID" style="display: none;">
         </tr>
         }
     </tbody>

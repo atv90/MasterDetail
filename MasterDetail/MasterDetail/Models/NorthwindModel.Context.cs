@@ -13,9 +13,9 @@ namespace MasterDetail.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class northwindEntities : DbContext
+    public partial class NorthwindEntities : DbContext
     {
-        public northwindEntities()
+        public NorthwindEntities()
             : base("name=northwindEntities")
         {
         }
